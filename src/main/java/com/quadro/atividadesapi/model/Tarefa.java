@@ -7,6 +7,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Table;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -14,9 +15,10 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@Table(schema="atividades")
 public class Tarefa {
 	@Id
-	@SequenceGenerator(name = "pk_tarefa", sequenceName= "tarefa_id_seq" , allocationSize = 1)
+	@SequenceGenerator(name = "pk_tarefa", sequenceName= "tarefa_id_seq" , allocationSize = 1, schema="atividades")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_tarefa")
 	private Integer id;
 	
