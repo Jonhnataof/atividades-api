@@ -28,7 +28,14 @@ public class TarefaService {
 	}
 
 	public void save(Tarefa tarefa) {
-		tarefaRepository.save(tarefa);
+		String titulo = tarefa.getTitulo();
+		int qtd = tarefa.getDescricao().length();
+		
+		
+		if (titulo.startsWith("#") && (qtd <= 2000)) {
+			tarefaRepository.save(tarefa);
+		}
+		
 	}
 
 	public void delete(Integer id) {
