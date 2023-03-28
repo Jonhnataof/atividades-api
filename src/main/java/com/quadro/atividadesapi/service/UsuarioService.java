@@ -23,7 +23,17 @@ public class UsuarioService {
 	}
 
 	public void save(Usuario usuario) {
-		usuarioRepository.save(usuario);
+		String senha = usuario.getSenha();
+		int quantidadeDeCaractere = senha.length();
+		//int qtd = usuario.getSenha().length();
+		
+		String email = usuario.getEmail();
+		
+		Usuario u = usuarioRepository.findByEmail(email);
+		
+		if (quantidadeDeCaractere >= 8 && senha.startsWith("a") && senha.endsWith("0") && email.contains("@") && email.contains(".com") && u== null) {
+			usuarioRepository.save(usuario);
+		}
 	}
 
 	public void delete(Integer id) {
